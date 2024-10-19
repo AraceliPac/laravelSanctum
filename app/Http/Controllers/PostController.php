@@ -17,7 +17,12 @@ class PostController extends Controller
             'title' => ['required', 'string', 'min:3'],
             'content' => ['required', 'string', 'max:5000'],
             'user_id' => ['required', 'exists:users,id'],
+
         ]);
-        return Post::Create($data);
+        $newPost = Post::Create($data);
+
+        //enviar mail al author del nou post creat. 
+        
+        return $newPost;
     }
 }
